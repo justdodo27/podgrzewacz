@@ -1,0 +1,244 @@
+/* Range - blue */
+
+input[type=range].slider-blue::-webkit-slider-runnable-track,
+input[type=range].slider-blue:focus::-webkit-slider-runnable-track,
+input[type=range].slider-blue::-moz-range-track{
+  background: #01579b !important;
+}
+
+input[type=range].slider-blue::-webkit-slider-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-blue::-ms-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-blue::-moz-range-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+/* Range - blue2 */
+
+input[type=range].slider-blue2::-webkit-slider-runnable-track,
+input[type=range].slider-blue2:focus::-webkit-slider-runnable-track,
+input[type=range].slider-blue2::-moz-range-track{
+  background: #0d47a1 !important;
+}
+
+input[type=range].slider-blue2::-webkit-slider-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-blue2::-ms-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-blue2::-moz-range-thumb{
+  background: #80d8ff !important;
+  cursor: pointer;
+}
+
+/* Range - red */
+
+input[type=range].slider-red::-webkit-slider-runnable-track,
+input[type=range].slider-red:focus::-webkit-slider-runnable-track,
+input[type=range].slider-red::-moz-range-track{
+  background: #c62828 !important;
+}
+
+input[type=range].slider-red::-webkit-slider-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-red::-ms-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-red::-moz-range-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+/* Range - red2 */
+
+input[type=range].slider-red2::-webkit-slider-runnable-track,
+input[type=range].slider-red2:focus::-webkit-slider-runnable-track,
+input[type=range].slider-red2::-moz-range-track{
+  background: #b71c1c !important;
+}
+
+input[type=range].slider-red2::-webkit-slider-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-red2::-ms-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-red2::-moz-range-thumb{
+  background: #ff8a80 !important;
+  cursor: pointer;
+}
+
+/* Range - purple */
+
+input[type=range].slider-purple::-webkit-slider-runnable-track, 
+input[type=range].slider-purple:focus::-webkit-slider-runnable-track,
+input[type=range].slider-purple::-moz-range-track{
+  background: #6a1b9a !important;
+}
+
+input[type=range].slider-purple::-webkit-slider-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-purple::-ms-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-purple::-moz-range-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+/* Range - purple2 */
+
+input[type=range].slider-purple2::-webkit-slider-runnable-track, 
+input[type=range].slider-purple2:focus::-webkit-slider-runnable-track,
+input[type=range].slider-purple2::-moz-range-track{
+  background: #4a148c !important;
+}
+
+input[type=range].slider-purple2::-webkit-slider-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-purple2::-ms-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-purple2::-moz-range-thumb{
+  background: #ea80fc !important;
+  cursor: pointer;
+}
+
+/* Range - indigo */
+
+input[type=range].slider-indigo::-webkit-slider-runnable-track,
+input[type=range].slider-indigo:focus::-webkit-slider-runnable-track,
+input[type=range].slider-indigo::-moz-range-track{
+  background: #283593 !important;
+}
+
+input[type=range].slider-indigo::-webkit-slider-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-indigo::-ms-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-indigo::-moz-range-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+/* Range - indigo2 */
+
+input[type=range].slider-indigo2::-webkit-slider-runnable-track, 
+input[type=range].slider-indigo2:focus::-webkit-slider-runnable-track,
+input[type=range].slider-indigo2::-moz-range-track{
+  background: #1a237e !important;
+}
+
+input[type=range].slider-indigo2::-webkit-slider-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-indigo2::-ms-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-indigo2::-moz-range-thumb{
+  background: #8c9eff !important;
+  cursor: pointer;
+}
+
+/* Range - orange */
+
+input[type=range].slider-orange::-webkit-slider-runnable-track, 
+input[type=range].slider-orange:focus::-webkit-slider-runnable-track,
+input[type=range].slider-orange::-moz-range-track{
+  background: #ef6c00 !important;
+}
+
+input[type=range].slider-orange::-webkit-slider-thumb{
+  background: #ffd180 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-orange::-ms-thumb{
+  background: #ffd180 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-orange::-moz-range-thumb{
+  background: #ffd180 !important;
+  cursor: pointer;
+}
+
+/* Range - orange2 */
+
+input[type=range].slider-orange2::-webkit-slider-runnable-track, 
+input[type=range].slider-orange2:focus::-webkit-slider-runnable-track,
+input[type=range].slider-orange2::-moz-range-track{
+  background: #e65100 !important;
+}
+
+input[type=range].slider-orange2::-webkit-slider-thumb{
+  background:#ffd180 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-orange2::-ms-thumb{
+  background:#ffd180 !important;
+  cursor: pointer;
+}
+
+input[type=range].slider-orange2::-moz-range-thumb{
+  background:#ffd180 !important;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.underline{
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.underline:hover{
+  text-decoration: underline solid #eceff1;
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='colors.css') }}">
+    <!-- CSS only (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    <title>PA Projekt</title>
+</head>
+<body style="height: 100vh;">
+    <div class="container-fluid grey darken-4 text-white p-3">
+        <div class="row">
+            <div class="col-12 d-flex">
+                <h1 class="flex-grow-1" style="text-align: center;">Podgrzewacz przepływowy wody</h1>
+            </div>
+            <div class="col-12 d-flex">
+                <h4 class="flex-grow-1" style="text-align: center;">Wykonali: Sebastian Szczepaniak, Andrzej Kapczyński, Dominik Sawicki</h4>
+            </div>
+            <div id="carouselExampleCaptions" class="carousel slide col-12" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+                  <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='jacuzzi.png') }}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Podgrzewanie wody w jacuzzi</h5>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='woda.png') }}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5 class="black-text" style="text-shadow: 1px 1px 5px black;">Podgrzewanie wody w domu</h5>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" style="text-shadow: 1px 1px 5px black;" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" style="text-shadow: 1px 1px 5px black;" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
+        </div>
+        <div class="row justify-content-center">
+            <form id="interface-1" class="col-6 container-fluid mb-3 p-4">
+                <h3 class="text-center">Podgrzewacz 1</h3>
+                <h5 class="text-center">Lista parametrów</h5>
+                <div class="row justify-content-center">
+                    <h4 class="col-12 text-center">Urządzenie wykonawcze</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="U" class="form-label">Napięcie maksymalne grzałki</label>
+                        <input type="range" oninput="updateValue('1', '#U');" aria-describedby="U-help" class="form-range slider-orange" name="U" id="U" min="70" max="230" step="10" value="230">
+                        <div id="U-help" class="form-text grey-text text-lighten-4 mb-3"><span id="U_val">230</span> V</div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="V" class="form-label">Objętość zbiornika</label>
+                        <input type="range" oninput="updateValue('1', '#V');" aria-describedby="V-help" class="form-range slider-orange" name="V" id="V" min="0.001" max="0.01" step="0.001" value="0.01">
+                        <div id="V-help" class="form-text grey-text text-lighten-4 mb-3"><span id="V_val">0.01</span> m<sup>3</sup></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="flow" class="form-label">Przepływ wody</label>
+                        <input type="range" oninput="updateValue('1', '#flow');" aria-describedby="flow-help" name="flow" id="flow" class="form-range slider-orange" min="0.01" max="0.1" step="0.005" value="0.04">
+                        <div id="flow-help" class="form-text grey-text text-lighten-4 mb-3"><span id="flow_val">2.4</span> l/min.</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Substancja</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="temp0" class="form-label">Temperatura początkowa</label>
+                        <input type="range" oninput="updateValue('1', '#temp0');" aria-describedby="temp0-help" name="temp0" id="temp0" class="form-range slider-red" min="10" max="90" step="5" value="20">
+                        <div id="temp0-help" class="form-text grey-text text-lighten-4 mb-3"><span id="temp0_val">20</span> °C</div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="temp1" class="form-label">Temperatura zadana</label>
+                        <input type="range" oninput="updateValue('1', '#temp1');" aria-describedby="temp1-help" name="temp1" id="temp1" class="form-range slider-red" min="40" max="100" step="10" value="60">
+                        <div id="temp1-help" class="form-text grey-text text-lighten-4 mb-3"><span id="temp1_val">60</span> °C</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Regulator</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Kp" class="form-label">Wzmocnienie regulatora</label>
+                        <input type="range" oninput="updateValue('1', '#Kp');" aria-describedby="Kp-help" name="Kp" id="Kp" class="form-range slider-purple" min="0.001" max="0.05" step="0.001" value="0.002">
+                        <div id="Kp-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Kp_val">0.002</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Ti" class="form-label">Czas zdwojenia</label>
+                        <input type="range" oninput="updateValue('1', '#Ti');" aria-describedby="Ti-help" name="Ti" id="Ti" class="form-range slider-purple" min="0.1" max="10" step="0.1" value="1.5">
+                        <div id="Ti-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Ti_val">1.5</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Td" class="form-label">Czas wyprzedzenia</label>
+                        <input type="range" oninput="updateValue('1', '#Td');" aria-describedby="Td-help" name="Td" id="Td" class="form-range slider-purple" min="0.001" max="1" step="0.001" value="0.001">
+                        <div id="Td-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Td_val">0.001</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label for="tp" class="form-label">Czas próbkowania</label>
+                        <input type="range" oninput="updateValue('1', '#tp');" aria-describedby="tp-help" name="tp" id="tp" class="form-range slider-purple" min="0.1" max="1" step="0.05" value="0.1">
+                        <div id="tp-help" class="form-text grey-text text-lighten-4"><span id="tp_val">0.1</span> s</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Symulacja</h4>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label for="tsim" class="form-label">Czas symulacji</label>
+                        <input type="range" oninput="updateValue('1', '#tsim');" aria-describedby="tsim-help" name="tsim" id="tsim" class="form-range slider-indigo" min="300" max="3600" step="300" value="1500">
+                        <div id="tsim-help" class="form-text grey-text text-lighten-4"><span id="tsim_val">25</span> min.</div>
+                    </div>
+                </div>
+            </form>
+            <form id="interface-2" class="col-6 container-fluid mb-3 p-4">
+                <h3 class="text-center">Podgrzewacz 2</h3>
+                <h5 class="text-center">Lista parametrów</h5>
+                <div class="row justify-content-center">
+                    <h4 class="col-12 text-center">Urządzenie wykonawcze</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="U" class="form-label">Napięcie maksymalne grzałki</label>
+                        <input type="range" oninput="updateValue('2', '#U');" aria-describedby="U-help" class="form-range slider-orange2" name="U" id="U" min="70" max="230" step="10" value="230">
+                        <div id="U-help" class="form-text grey-text text-lighten-4 mb-3"><span id="U_val">230</span> V</div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="V" class="form-label">Objętość zbiornika</label>
+                        <input type="range" oninput="updateValue('2', '#V');" aria-describedby="V-help" class="form-range slider-orange2" name="V" id="V" min="0.001" max="0.01" step="0.001" value="0.01">
+                        <div id="V-help" class="form-text grey-text text-lighten-4 mb-3"><span id="V_val">0.01</span> m<sup>3</sup></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="flow" class="form-label">Przepływ wody</label>
+                        <input type="range" oninput="updateValue('2', '#flow');" aria-describedby="flow-help" name="flow" id="flow" class="form-range slider-orange2" min="0.01" max="0.1" step="0.005" value="0.035">
+                        <div id="flow-help" class="form-text grey-text text-lighten-4 mb-3"><span id="flow_val">2.1</span> l/min.</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Substancja</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="temp0" class="form-label">Temperatura początkowa</label>
+                        <input type="range" oninput="updateValue('2', '#temp0');" aria-describedby="temp0-help" name="temp0" id="temp0" class="form-range slider-red2" min="10" max="90" step="5" value="20">
+                        <div id="temp0-help" class="form-text grey-text text-lighten-4 mb-3"><span id="temp0_val">20</span> °C</div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="temp1" class="form-label">Temperatura zadana</label>
+                        <input type="range" oninput="updateValue('2', '#temp1');" aria-describedby="temp1-help" name="temp1" id="temp1" class="form-range slider-red2" min="40" max="100" step="10" value="60">
+                        <div id="temp1-help" class="form-text grey-text text-lighten-4 mb-3"><span id="temp1_val">60</span> °C</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Regulator</h4>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Kp" class="form-label">Wzmocnienie regulatora</label>
+                        <input type="range" oninput="updateValue('2', '#Kp');" aria-describedby="Kp-help" name="Kp" id="Kp" class="form-range slider-purple2" min="0.001" max="0.05" step="0.001" value="0.001">
+                        <div id="Kp-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Kp_val">0.001</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Ti" class="form-label">Czas zdwojenia</label>
+                        <input type="range" oninput="updateValue('2', '#Ti');" aria-describedby="Ti-help" name="Ti" id="Ti" class="form-range slider-purple2" min="0.1" max="10" step="0.1" value="0.1">
+                        <div id="Ti-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Ti_val">0.1</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <label for="Td" class="form-label">Czas wyprzedzenia</label>
+                        <input type="range" oninput="updateValue('2', '#Td');" aria-describedby="Td-help" name="Td" id="Td" class="form-range slider-purple2" min="0.001" max="1" step="0.001" value="0.001">
+                        <div id="Td-help" class="form-text grey-text text-lighten-4 mb-3"><span id="Td_val">0.001</span></div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label for="tp" class="form-label">Czas próbkowania</label>
+                        <input type="range" oninput="updateValue('2', '#tp');" aria-describedby="tp-help" name="tp" id="tp" class="form-range slider-purple2" min="0.1" max="1" step="0.05" value="0.1">
+                        <div id="tp-help" class="form-text grey-text text-lighten-4"><span id="tp_val">0.1</span> s</div>
+                    </div>
+                    <hr class="col-12">
+                    <h4 class="col-12 text-center">Symulacja</h4>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label for="tsim" class="form-label">Czas symulacji</label>
+                        <input type="range" oninput="updateValue('2', '#tsim');" aria-describedby="tsim-help" name="tsim" id="tsim" class="form-range slider-indigo2" min="300" max="3600" step="300" value="1500">
+                        <div id="tsim-help" class="form-text grey-text text-lighten-4"><span id="tsim_val">25</span> min.</div>
+                    </div>
+                </div>
+            </form>
+            <div class="col-6 container-fluid">
+                <div class="row m-5" style="padding: 0px 120px;">
+                    <h2 class="text-center col-12">Wskaźniki jakości</h2>
+                    <h4 class="text-start col-6">Uchyb ustalony:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="uchyb-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Przeregulowanie:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="przereg-val"></span> %
+                    </h4>
+                    <h4 class="text-start col-6">Dokładność regulacji:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="dokl-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Koszty regulacji:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="koszt-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Czas regulacji:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="czas-val"></span> min.
+                    </h4>
+                </div>
+            </div>
+            <div class="col-6 container-fluid">
+                <div class="row m-5" style="padding: 0px 120px;">
+                    <h2 class="text-center col-12">Wskaźniki jakości</h2>
+                    <h4 class="text-start col-6">Uchyb ustalony:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="uchyb-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Przeregulowanie:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="przereg-val"></span> %
+                    </h4>
+                    <h4 class="text-start col-6">Dokładność regulacji:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="dokl-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Koszty regulacji:</h4>
+                    <h4 class="col-6  underline">
+                        <span id="koszt-val"></span>
+                    </h4>
+                    <h4 class="text-start col-6">Czas regulacji:</h4>
+                    <h4 class="col-6 underline">
+                        <span id="czas-val"></span> min.
+                    </h4>
+                </div>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button class="btn red accent-3 text-white" onclick="calc('#interface-1');">Symuluj</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button class="btn red accent-3 text-white" onclick="calc('#interface-2');">Symuluj</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <iframe id="graph1" class="col-6 grey darken-3" src="{{ url_for('static', filename='graph1.html') }}" frameborder="0" height="100%" width="50%"></iframe>
+            <iframe id="graph2" class="col-6 grey darken-3" src="{{ url_for('static', filename='graph2.html') }}" frameborder="0" height="100%" width="50%"></iframe>
+        </div>
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js" integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ==" crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper (bootstrap) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script type="text/javascript" charset="utf-8">
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('my event', {data: 'I\'m connected!'});
+            });
+
+        function calc(id){
+            console.log(id+"#U");
+            let U = document.querySelector(id+" input#U").value;
+            let V = document.querySelector(id+" input#V").value;
+            let temp0 = document.querySelector(id+" input#temp0").value;
+            let temp1 = document.querySelector(id+" input#temp1").value;
+            let flow = document.querySelector(id+" input#flow").value;
+            let Kp = document.querySelector(id+" input#Kp").value;
+            let Ti = document.querySelector(id+" input#Ti").value;
+            let Td = document.querySelector(id+" input#Td").value;
+            let tp = document.querySelector(id+" input#tp").value;
+            let tsim = document.querySelector(id+" input#tsim").value;
+            socket.emit('calculate', {
+                U: U, V: V, temp0: temp0, temp1: temp1,
+                flow: flow, Kp: Kp, Ti: Ti, Td: Td, 
+                tp: tp, tsim: tsim, graph: id
+            });
+            console.log("Emitted calculate event.");
+        };
+
+        function updateValue(interface, id){
+            let value = document.querySelector('form#interface-'+interface+ ' ' +id).value;
+            if(id == "#tsim") value/=60;
+            if(id == "#flow") value = (value * 60).toFixed(1);
+            document.querySelector('form#interface-'+interface+ ' ' +id + "_val").innerHTML = value;
+        };
+
+        socket.on('calculated', function(data){
+            console.log("Got new graph.");
+            console.log(data);
+            let iframe = document.querySelector(data.graf).contentWindow.location.reload(true);
+            document.querySelectorAll("#uchyb-val")[data.graf_nr].innerHTML = data.uchyb;
+            document.querySelectorAll("#przereg-val")[data.graf_nr].innerHTML = data.przeregulowanie;
+            document.querySelectorAll("#dokl-val")[data.graf_nr].innerHTML = data.dokladnosc;
+            document.querySelectorAll("#koszt-val")[data.graf_nr].innerHTML = data.koszty;
+            document.querySelectorAll("#czas-val")[data.graf_nr].innerHTML = data.czas;
+        });
+    </script>
+</body>
+</html>

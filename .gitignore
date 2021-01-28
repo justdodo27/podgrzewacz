@@ -1,0 +1,5 @@
+venv/
+.vscode/
+__pycache__/
+graph1.html
+graph2.html
